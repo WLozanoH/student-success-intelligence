@@ -97,6 +97,8 @@ el primer semestre académico.
 - docs/: Documentación técnica y de negocio.
 - powerbi/: Proyecto de Power BI.
 
+![estructura del proyecto](/docs/images/screenshots/project_structure.png)
+
 ## 8. Estado del proyecto
 
 Fase 1 - Configuración del repositorio y del proyecto.
