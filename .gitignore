@@ -1,0 +1,50 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data - sensitive or reproducible artifacts
+data/raw/*
+data/staging/*
+data/processed/*
+!data/README.md
+
+# Model artifacts
+models/artifacts/*
+!models/artifacts/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# Power BI temporary files
+**/.pbi/
+**/Cache.abf
+**/AnalysisServicesWorkspace*/
+*.pbix
+*.pbit
+
+# IDE
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
