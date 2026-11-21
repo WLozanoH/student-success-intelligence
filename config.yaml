@@ -2,7 +2,19 @@ project:
   name: Student Success Intelligence
   version: 1.0
 
+dataset:
+  name: "Predict Student's Dropout and Academic Succes"
+  taget_column: Target
+  rows_expected: 4424
+  expected_features: 36
+
 paths:
   raw_data: data/raw/
   processed_data: data/processed/
+  stagging_data: data/stagging/
   models: models/
+  notebooks: notebooks
+  docs: docs
+  logs: logs
+
+
