@@ -4,14 +4,14 @@ project:
 
 dataset:
   name: "Predict Student's Dropout and Academic Succes"
-  taget_column: Target
+  target_column: Target
   rows_expected: 4424
   expected_features: 36
 
 paths:
   raw_data: data/raw/
   processed_data: data/processed/
-  stagging_data: data/stagging/
+  staging_data: data/staging/
   models: models/
   notebooks: notebooks
   docs: docs

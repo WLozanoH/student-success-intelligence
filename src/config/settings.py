@@ -6,7 +6,7 @@ import yaml
 # ==========================================
 
 # Obtener la raiz del proyecto
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 # ==========================================
 # LOAD CONFIGURATION
@@ -24,10 +24,10 @@ with open(CONFIG_PATH, 'r', encoding= 'utf-8') as file:
 # PROJECT CONFIGURATION
 # ==========================================
 
-DATASET_NAME = PROJECT_ROOT / CONFIG["dataset"]["name"]
-TARGET_NAME = PROJECT_ROOT / CONFIG["dataset"]["target_column"]
-ROWS_EXPECTED = PROJECT_ROOT / CONFIG["dataset"]["rows_expected"]
-EXPECTED_FEATURES = PROJECT_ROOT / CONFIG["dataset"]["expected_features"]
+DATASET_NAME = CONFIG["dataset"]["name"]
+TARGET_COLUMN = CONFIG["dataset"]["target_column"]
+ROWS_EXPECTED = CONFIG["dataset"]["rows_expected"]
+EXPECTED_FEATURES = CONFIG["dataset"]["expected_features"]
 
 # ==========================================
 # DATA DIRECTORIES
@@ -39,7 +39,12 @@ RAW_DATA_DIR =  PROJECT_ROOT / PATHS["raw_data"]
 STAGING_DATA_DIR =  PROJECT_ROOT / PATHS["staging_data"]
 PROCESSED_DATA_DIR =  PROJECT_ROOT / PATHS["processed_data"]
 
+MODELS_DATA_DIR = PROJECT_ROOT / PATHS["models"]
+NOTEBOOKS_DATA_DIR = PROJECT_ROOT / PATHS["notebooks"]
+DOCS_DATA_DIR = PROJECT_ROOT / PATHS["docs"]
+LOGS_DATA_DIR = PROJECT_ROOT / PATHS["logs"]
+
 # ==========================================
 # RAW DATA FILES
 # ==========================================
-RAW_DATA_DIR = RAW_DATA_DIR / 'dataset.csv'
+RAW_DATA_FILE = RAW_DATA_DIR / 'dataset.csv'
