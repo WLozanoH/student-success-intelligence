@@ -1,19 +1,15 @@
-
-# Python
+# Python cache
 __pycache__/
 *.py[cod]
-*.pyo
+
+# Python package metadata
 *.egg-info/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-build/
 dist/
+build/
 
 # Virtual environment
 .venv/
 venv/
-env/
 
 # Environment variables
 .env
@@ -50,7 +46,6 @@ logs/*
 .DS_Store
 Thumbs.db
 desktop.ini
-
 
 ## Kernel jupiter Notebook
 src/config/settings.ipynb
