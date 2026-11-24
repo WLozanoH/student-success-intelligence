@@ -1,0 +1,38 @@
+﻿column_name,description,data_type,variable_type,data_group,domain,availability_stage,prediction_scenario,is_target,missing_count,unique_values
+Marital status,Student's marital status at enrollment.,int64,categorical,demographic,"1=single, 2=married, 3=widower, 4=divorced, 5=facto union, 6=legally separated.",enrollment,enrollment,False,0,6
+Application mode,Admission pathway or application mode used by the student.,int64,categorical,admission,Categorical admission codes documented by UCI.,enrollment,enrollment,False,0,18
+Application order,Preference order of the selected course during application.,int64,ordinal,admission,Integer code from 0 to 9; 0 represents first choice and 9 last choice.,enrollment,enrollment,False,0,8
+Course,Undergraduate degree program in which the student enrolled.,int64,categorical,academic,Institutional course codes documented by UCI.,enrollment,enrollment,False,0,17
+Daytime/evening attendance,Study schedule selected by the student.,int64,binary,academic,"1=daytime, 0=evening.",enrollment,enrollment,False,0,2
+Previous qualification,Highest previous educational qualification of the student.,int64,categorical,academic_background,Educational qualification codes documented by UCI.,enrollment,enrollment,False,0,17
+Previous qualification (grade),Grade obtained in the student's previous qualification.,float64,continuous,academic_background,Grade between 0 and 200.,enrollment,enrollment,False,0,101
+Nacionality,Nationality of the student.,int64,categorical,demographic,Nationality codes documented by UCI.,enrollment,enrollment,False,0,21
+Mother's qualification,Highest educational qualification of the student's mother.,int64,categorical,family_background,Educational qualification codes documented by UCI.,enrollment,enrollment,False,0,29
+Father's qualification,Highest educational qualification of the student's father.,int64,categorical,family_background,Educational qualification codes documented by UCI.,enrollment,enrollment,False,0,34
+Mother's occupation,Occupational category of the student's mother.,int64,categorical,family_background,Occupational codes documented by UCI.,enrollment,enrollment,False,0,32
+Father's occupation,Occupational category of the student's father.,int64,categorical,family_background,Occupational codes documented by UCI.,enrollment,enrollment,False,0,46
+Admission grade,Grade obtained by the student during the admission process.,float64,continuous,admission,Grade between 0 and 200.,enrollment,enrollment,False,0,620
+Displaced,Indicates whether the student is displaced from their usual residence.,int64,binary,socioeconomic,"1=yes, 0=no.",enrollment,enrollment,False,0,2
+Educational special needs,Indicates whether the student has special educational needs.,int64,binary,student_profile,"1=yes, 0=no.",enrollment,enrollment,False,0,2
+Debtor,Indicates whether the student has outstanding debt.,int64,binary,financial,"1=yes, 0=no.",enrollment,enrollment,False,0,2
+Tuition fees up to date,Indicates whether tuition fees are up to date.,int64,binary,financial,"1=yes, 0=no.",enrollment,enrollment,False,0,2
+Gender,Gender code recorded for the student.,int64,binary,demographic,"1=male, 0=female.",enrollment,enrollment,False,0,2
+Scholarship holder,Indicates whether the student is a scholarship holder.,int64,binary,financial,"1=yes, 0=no.",enrollment,enrollment,False,0,2
+Age at enrollment,Age of the student at the time of enrollment.,int64,integer,demographic,Age expressed in years.,enrollment,enrollment,False,0,46
+International,Indicates whether the student is an international student.,int64,binary,demographic,"1=yes, 0=no.",enrollment,enrollment,False,0,2
+Curricular units 1st sem (credited),Number of curricular units credited in the first semester.,int64,count,academic_performance,Non-negative count of credited curricular units.,first_semester,first_semester,False,0,21
+Curricular units 1st sem (enrolled),Number of curricular units enrolled in the first semester.,int64,count,academic_performance,Non-negative count of enrolled curricular units.,first_semester,first_semester,False,0,23
+Curricular units 1st sem (evaluations),Number of evaluations in the first semester.,int64,count,academic_performance,Non-negative count of evaluations.,first_semester,first_semester,False,0,35
+Curricular units 1st sem (approved),Number of curricular units approved in the first semester.,int64,count,academic_performance,Non-negative count of approved curricular units.,first_semester,first_semester,False,0,23
+Curricular units 1st sem (grade),Average grade obtained in the first semester.,float64,continuous,academic_performance,Grade between 0 and 20.,first_semester,first_semester,False,0,805
+Curricular units 1st sem (without evaluations),Number of curricular units without evaluations in the first semester.,int64,count,academic_performance,Non-negative count of curricular units.,first_semester,first_semester,False,0,11
+Curricular units 2nd sem (credited),Number of curricular units credited in the second semester.,int64,count,academic_performance,Non-negative count of credited curricular units.,second_semester,second_semester,False,0,19
+Curricular units 2nd sem (enrolled),Number of curricular units enrolled in the second semester.,int64,count,academic_performance,Non-negative count of enrolled curricular units.,second_semester,second_semester,False,0,22
+Curricular units 2nd sem (evaluations),Number of evaluations in the second semester.,int64,count,academic_performance,Non-negative count of evaluations.,second_semester,second_semester,False,0,30
+Curricular units 2nd sem (approved),Number of curricular units approved in the second semester.,int64,count,academic_performance,Non-negative count of approved curricular units.,second_semester,second_semester,False,0,20
+Curricular units 2nd sem (grade),Average grade obtained in the second semester.,float64,continuous,academic_performance,Grade between 0 and 20.,second_semester,second_semester,False,0,786
+Curricular units 2nd sem (without evaluations),Number of curricular units without evaluations in the second semester.,int64,count,academic_performance,Non-negative count of curricular units.,second_semester,second_semester,False,0,10
+Unemployment rate,Unemployment rate associated with the period represented in the dataset.,float64,continuous,macroeconomic,Percentage; reference period and geographic scope should be verified.,enrollment_context,enrollment,False,0,10
+Inflation rate,Inflation rate associated with the period represented in the dataset.,float64,continuous,macroeconomic,Percentage; reference period and geographic scope should be verified.,enrollment_context,enrollment,False,0,9
+GDP,Gross domestic product indicator associated with the period represented in the dataset.,float64,continuous,macroeconomic,Numerical economic indicator; unit and reference period should be verified.,enrollment_context,enrollment,False,0,10
+Target,"Final student outcome: dropout, enrolled, or graduate.",str,target,academic_outcome,"Dropout, Enrolled, Graduate.",end_of_program,outcome,True,0,3
