@@ -7,7 +7,7 @@ from src.config.settings import (
 
 def extract_dataset(
     file_path: str | Path = RAW_DATA_FILE,
-    sep: str = ",",
+    sep: str = ";",
     encoding: str = 'utf-8'
 ) -> pd.DataFrame:
     """Extrae el conjunto de datos original de los estudiantes de un archivo CSV.
@@ -52,6 +52,8 @@ def extract_dataset(
             sep=sep,
             encoding=encoding
         )
+        
+        df.columns = df.columns.str.strip()     # Eliminar tabulaciones y espacios
         
     except UnicodeDecodeError as error:     # capturar errores de codificación
         raise ValueError(
