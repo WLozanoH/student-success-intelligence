@@ -5,8 +5,8 @@ project:
 dataset:
   name: "Predict Student's Dropout and Academic Succes"
   target_column: Target
-  rows_expected: 4424
-  expected_features: 36
+  expected_rows: 4424
+  expected_columns: 37
 
 paths:
   raw_data: data/raw/
@@ -15,6 +15,7 @@ paths:
   models: models/
   notebooks: notebooks
   docs: docs
+  figures: docs/images/figures
   logs: logs
 
 
