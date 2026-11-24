@@ -1,10 +1,13 @@
 from pathlib import Path
 import pandas as pd
-from src.config.settings import RAW_DATA_FILE
+from src.config.settings import (
+    RAW_DATA_FILE,
+    PROJECT_ROOT
+)
 
 def extract_dataset(
     file_path: str | Path = RAW_DATA_FILE,
-    sep: str = ',',
+    sep: str = ",",
     encoding: str = 'utf-8'
 ) -> pd.DataFrame:
     """Extrae el conjunto de datos original de los estudiantes de un archivo CSV.
@@ -36,7 +39,7 @@ def extract_dataset(
     path = Path(file_path)
     
     if not path.is_absolute(): # verificar la raiz del proyecto
-        path = RAW_DATA_FILE.parents[2] / path
+        path = PROJECT_ROOT / path
         
     if not path.exists():   # verificar que el archivo exista
         raise FileNotFoundError(
@@ -52,8 +55,8 @@ def extract_dataset(
         
     except UnicodeDecodeError as error:     # capturar errores de codificación
         raise ValueError(
-            f'No se puede decodificar el conjunto de datos usado: {encoding}'
-        )
+            f'No se puede decodificar el dataset usando: {encoding}'
+        ) from error
         
     except pd.errors.ParserError as error:  # capturar errores de lectura
         raise ValueError(

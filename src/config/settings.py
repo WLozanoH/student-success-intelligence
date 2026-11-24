@@ -26,8 +26,8 @@ with open(CONFIG_PATH, 'r', encoding= 'utf-8') as file:
 
 DATASET_NAME = CONFIG["dataset"]["name"]
 TARGET_COLUMN = CONFIG["dataset"]["target_column"]
-ROWS_EXPECTED = CONFIG["dataset"]["rows_expected"]
-EXPECTED_FEATURES = CONFIG["dataset"]["expected_features"]
+EXPECTED_ROWS = CONFIG["dataset"]["expected_rows"]
+EXPECTED_COLUMNS = CONFIG["dataset"]["expected_columns"]
 
 # ==========================================
 # DATA DIRECTORIES
@@ -42,6 +42,7 @@ PROCESSED_DATA_DIR =  PROJECT_ROOT / PATHS["processed_data"]
 MODELS_DATA_DIR = PROJECT_ROOT / PATHS["models"]
 NOTEBOOKS_DATA_DIR = PROJECT_ROOT / PATHS["notebooks"]
 DOCS_DATA_DIR = PROJECT_ROOT / PATHS["docs"]
+FIGURES_DATA_DIR = PROJECT_ROOT / PATHS["figures"]
 LOGS_DATA_DIR = PROJECT_ROOT / PATHS["logs"]
 
 # ==========================================
