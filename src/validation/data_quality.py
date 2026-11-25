@@ -45,7 +45,8 @@ def validate_missing_values(df: pd.DataFrame) -> list[dict]:
             continue            # rompe el bucle y pasa al siguiente.
 
         resultados.append({
-            "Verifica": f"Valores faltantes: {columna}",
+            "Verificar": f"Valores faltantes:",
+            "Columna": columna,
             "Estado": "WARN",
             "Detalles": f"{cantidad} valores faltantes detectados",
             "Filas_afectadas": int(cantidad),
@@ -55,6 +56,7 @@ def validate_missing_values(df: pd.DataFrame) -> list[dict]:
     if not resultados:                                      # Si no encontramos faltantes - > if not resultados = vacío
         resultados.append({
             "Verificar": "Valores faltantes",
+            "Columna": None,
             "Estado": "PASS",
             "Detalles": "No hay valores faltantes detectados",
             "Filas_afectadas": 0,
@@ -136,7 +138,8 @@ def validate_negative_counts(df: pd.DataFrame) -> list[dict]:
         invalid_count = int(invalid_mask.sum())         # Contar los registros incorrectos.
 
         results.append({
-            "Verificar": f"Valores negativos: {column}",
+            "Verificar": f"Valores negativos:",
+            "Columna": column,
             "Estado": "FAIL" if invalid_count else "PASS",
             "Detalles": (
                 f"{invalid_count} Valores negativos detectados"

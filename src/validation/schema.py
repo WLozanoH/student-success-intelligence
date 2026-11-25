@@ -155,6 +155,7 @@ def validate_data_types(df: pd.DataFrame) -> list[dict]:
             
         resultados.append({
             "Verificar": "Tipo de dato",
+            "Columna": column,
             "Estado": "PASS" if valid_type else "FAIL",
             "Detalles": (
                 f'Tipo esperado correctamente detectado {series.dtype}'
