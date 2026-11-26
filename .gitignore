@@ -49,3 +49,6 @@ desktop.ini
 
 ## Kernel jupiter Notebook
 src/config/settings.ipynb
+
+# Generated data validation reports
+src/validation/reports/*
