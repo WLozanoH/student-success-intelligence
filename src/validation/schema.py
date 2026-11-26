@@ -186,7 +186,7 @@ def validate_row_count(df: pd.DataFrame) -> list[dict]:
     
     return [{
         "Verificar": "Cantidad de filas esperadas",
-        "Estado": "PASS" if cantidad_validada else "WARNING",
+        "Estado": "PASS" if cantidad_validada else "WARN",
         "Detalles": (
             f'Esperado: {FILAS_ESPERADAS} | Actual: {filas_actuales}'
         ),
