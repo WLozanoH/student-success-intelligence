@@ -5,6 +5,8 @@ from src.config.settings import (
     PROJECT_ROOT
 )
 
+from src.ingestion.normalize_columns import normalize_column_names
+
 def extract_dataset(
     file_path: str | Path = RAW_DATA_FILE,
     sep: str = ";",
@@ -53,7 +55,6 @@ def extract_dataset(
             encoding=encoding
         )
         
-        df.columns = df.columns.str.strip()     # Eliminar tabulaciones y espacios
         
     except UnicodeDecodeError as error:     # capturar errores de codificación
         raise ValueError(
