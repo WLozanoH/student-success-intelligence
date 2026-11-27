@@ -4,6 +4,7 @@ from src.config.settings import DOCS_DATA_DIR       # ruta donde se encuentra ..
 
 from src.ingestion.extract import extract_dataset   # funcion para extraer el dataset y validarlo
 
+from src.ingestion.normalize_columns import normalize_column_names
 
 
 # ==========================================
@@ -22,8 +23,8 @@ ruta_salida = (                 # Su responsabilidad es ejecutar el procedimient
 # ==========================================
 
 VARIABLE_METADATA = {
-        "Marital status": {
-        "description": "Student's marital status at enrollment.",
+    "marital status": {
+        "description": "Estado civil del estudiante al momento de la inscripción.",
         "variable_type": "categorical",
         "data_group": "demographic",
         "domain": "1=single, 2=married, 3=widower, 4=divorced, 5=facto union, 6=legally separated.",
@@ -31,8 +32,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Application mode": {
-        "description": "Admission pathway or application mode used by the student.",
+    "application mode": {
+        "description": "Vía de acceso o modalidad de solicitud utilizada por el estudiante.",
         "variable_type": "categorical",
         "data_group": "admission",
         "domain": "Categorical admission codes documented by UCI.",
@@ -40,8 +41,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Application order": {
-        "description": "Preference order of the selected course during application.",
+    "application order": {
+        "description": "Orden de preferencia del curso seleccionado durante la solicitud.",
         "variable_type": "ordinal",
         "data_group": "admission",
         "domain": "Integer code from 0 to 9; 0 represents first choice and 9 last choice.",
@@ -49,8 +50,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Course": {
-        "description": "Undergraduate degree program in which the student enrolled.",
+    "course": {
+        "description": "Programa de grado en el que el estudiante se ha matriculado.",
         "variable_type": "categorical",
         "data_group": "academic",
         "domain": "Institutional course codes documented by UCI.",
@@ -58,8 +59,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Daytime/evening attendance": {
-        "description": "Study schedule selected by the student.",
+    "daytime/evening attendance": {
+        "description": "Horario de estudio seleccionado por el alumno.",
         "variable_type": "binary",
         "data_group": "academic",
         "domain": "1=daytime, 0=evening.",
@@ -67,8 +68,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Previous qualification": {
-        "description": "Highest previous educational qualification of the student.",
+    "previous qualification": {
+        "description": "Máxima titulación académica previa del estudiante.",
         "variable_type": "categorical",
         "data_group": "academic_background",
         "domain": "Educational qualification codes documented by UCI.",
@@ -76,8 +77,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Previous qualification (grade)": {
-        "description": "Grade obtained in the student's previous qualification.",
+    "previous qualification (grade)": {
+        "description": "Calificación obtenida en la titulación previa del estudiante.",
         "variable_type": "continuous",
         "data_group": "academic_background",
         "domain": "Grade between 0 and 200.",
@@ -85,8 +86,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Nacionality": {
-        "description": "Nationality of the student.",
+    "nacionality": {
+        "description": "Nacionalidad del estudiante.",
         "variable_type": "categorical",
         "data_group": "demographic",
         "domain": "Nationality codes documented by UCI.",
@@ -94,8 +95,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Mother's qualification": {
-        "description": "Highest educational qualification of the student's mother.",
+    "mother's qualification": {
+        "description": "Máximo nivel educativo de la madre del estudiante.",
         "variable_type": "categorical",
         "data_group": "family_background",
         "domain": "Educational qualification codes documented by UCI.",
@@ -103,8 +104,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Father's qualification": {
-        "description": "Highest educational qualification of the student's father.",
+    "father's qualification": {
+        "description": "Máximo nivel educativo del padre del estudiante.",
         "variable_type": "categorical",
         "data_group": "family_background",
         "domain": "Educational qualification codes documented by UCI.",
@@ -112,8 +113,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Mother's occupation": {
-        "description": "Occupational category of the student's mother.",
+    "mother's occupation": {
+        "description": "Categoría ocupacional de la madre del estudiante.",
         "variable_type": "categorical",
         "data_group": "family_background",
         "domain": "Occupational codes documented by UCI.",
@@ -121,8 +122,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Father's occupation": {
-        "description": "Occupational category of the student's father.",
+    "father's occupation": {
+        "description": "Categoría ocupacional del padre del estudiante.",
         "variable_type": "categorical",
         "data_group": "family_background",
         "domain": "Occupational codes documented by UCI.",
@@ -130,8 +131,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Admission grade": {
-        "description": "Grade obtained by the student during the admission process.",
+    "admission grade": {
+        "description": "Calificación obtenida por el estudiante durante el proceso de admisión.",
         "variable_type": "continuous",
         "data_group": "admission",
         "domain": "Grade between 0 and 200.",
@@ -139,8 +140,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Displaced": {
-        "description": "Indicates whether the student is displaced from their usual residence.",
+    "displaced": {
+        "description": "Indica si el estudiante se encuentra desplazado de su lugar de residencia habitual.",
         "variable_type": "binary",
         "data_group": "socioeconomic",
         "domain": "1=yes, 0=no.",
@@ -148,8 +149,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Educational special needs": {
-        "description": "Indicates whether the student has special educational needs.",
+    "educational special needs": {
+        "description": "Indica si el estudiante tiene necesidades educativas especiales.",
         "variable_type": "binary",
         "data_group": "student_profile",
         "domain": "1=yes, 0=no.",
@@ -157,8 +158,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Debtor": {
-        "description": "Indicates whether the student has outstanding debt.",
+    "debtor": {
+        "description": "Indica si el estudiante tiene deuda pendiente.",
         "variable_type": "binary",
         "data_group": "financial",
         "domain": "1=yes, 0=no.",
@@ -166,8 +167,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Tuition fees up to date": {
-        "description": "Indicates whether tuition fees are up to date.",
+    "tuition fees up to date": {
+        "description": "Indica si el pago de las tasas de matrícula está al día.",
         "variable_type": "binary",
         "data_group": "financial",
         "domain": "1=yes, 0=no.",
@@ -175,8 +176,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Gender": {
-        "description": "Gender code recorded for the student.",
+    "gender": {
+        "description": "Código de género registrado para el estudiante.",
         "variable_type": "binary",
         "data_group": "demographic",
         "domain": "1=male, 0=female.",
@@ -184,8 +185,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Scholarship holder": {
-        "description": "Indicates whether the student is a scholarship holder.",
+    "scholarship holder": {
+        "description": "Indica si el estudiante es beneficiario de una beca.",
         "variable_type": "binary",
         "data_group": "financial",
         "domain": "1=yes, 0=no.",
@@ -193,8 +194,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Age at enrollment": {
-        "description": "Age of the student at the time of enrollment.",
+    "age at enrollment": {
+        "description": "Edad del estudiante en el momento de la inscripción.",
         "variable_type": "integer",
         "data_group": "demographic",
         "domain": "Age expressed in years.",
@@ -202,8 +203,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "International": {
-        "description": "Indicates whether the student is an international student.",
+    "international": {
+        "description": "Indica si el estudiante es un estudiante internacional.",
         "variable_type": "binary",
         "data_group": "demographic",
         "domain": "1=yes, 0=no.",
@@ -211,8 +212,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Curricular units 1st sem (credited)": {
-        "description": "Number of curricular units credited in the first semester.",
+    "curricular units 1st sem (credited)": {
+        "description": "Número de unidades curriculares convalidadas en el primer semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of credited curricular units.",
@@ -220,8 +221,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "first_semester",
     },
 
-    "Curricular units 1st sem (enrolled)": {
-        "description": "Number of curricular units enrolled in the first semester.",
+    "curricular units 1st sem (enrolled)": {
+        "description": "Número de unidades curriculares en las que se ha matriculado en el primer semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of enrolled curricular units.",
@@ -229,8 +230,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "first_semester",
     },
 
-    "Curricular units 1st sem (evaluations)": {
-        "description": "Number of evaluations in the first semester.",
+    "curricular units 1st sem (evaluations)": {
+        "description": "Número de evaluaciones en el primer semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of evaluations.",
@@ -238,8 +239,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "first_semester",
     },
 
-    "Curricular units 1st sem (approved)": {
-        "description": "Number of curricular units approved in the first semester.",
+    "curricular units 1st sem (approved)": {
+        "description": "Número de unidades curriculares aprobadas en el primer semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of approved curricular units.",
@@ -247,8 +248,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "first_semester",
     },
 
-    "Curricular units 1st sem (grade)": {
-        "description": "Average grade obtained in the first semester.",
+    "curricular units 1st sem (grade)": {
+        "description": "Nota media obtenida en el primer semestre.",
         "variable_type": "continuous",
         "data_group": "academic_performance",
         "domain": "Grade between 0 and 20.",
@@ -256,8 +257,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "first_semester",
     },
 
-    "Curricular units 1st sem (without evaluations)": {
-        "description": "Number of curricular units without evaluations in the first semester.",
+    "curricular units 1st sem (without evaluations)": {
+        "description": "Número de unidades curriculares sin evaluaciones en el primer semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of curricular units.",
@@ -265,8 +266,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "first_semester",
     },
 
-    "Curricular units 2nd sem (credited)": {
-        "description": "Number of curricular units credited in the second semester.",
+    "curricular units 2nd sem (credited)": {
+        "description": "Número de unidades curriculares convalidadas en el segundo semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of credited curricular units.",
@@ -274,8 +275,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "second_semester",
     },
 
-    "Curricular units 2nd sem (enrolled)": {
-        "description": "Number of curricular units enrolled in the second semester.",
+    "curricular units 2nd sem (enrolled)": {
+        "description": "Número de unidades curriculares en las que se ha matriculado en el segundo semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of enrolled curricular units.",
@@ -283,8 +284,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "second_semester",
     },
 
-    "Curricular units 2nd sem (evaluations)": {
-        "description": "Number of evaluations in the second semester.",
+    "curricular units 2nd sem (evaluations)": {
+        "description": "Número de evaluaciones en el segundo semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of evaluations.",
@@ -292,8 +293,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "second_semester",
     },
 
-    "Curricular units 2nd sem (approved)": {
-        "description": "Number of curricular units approved in the second semester.",
+    "curricular units 2nd sem (approved)": {
+        "description": "Número de unidades curriculares aprobadas en el segundo semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of approved curricular units.",
@@ -301,8 +302,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "second_semester",
     },
 
-    "Curricular units 2nd sem (grade)": {
-        "description": "Average grade obtained in the second semester.",
+    "curricular units 2nd sem (grade)": {
+        "description": "Nota media obtenida en el segundo semestre.",
         "variable_type": "continuous",
         "data_group": "academic_performance",
         "domain": "Grade between 0 and 20.",
@@ -310,8 +311,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "second_semester",
     },
 
-    "Curricular units 2nd sem (without evaluations)": {
-        "description": "Number of curricular units without evaluations in the second semester.",
+    "curricular units 2nd sem (without evaluations)": {
+        "description": "Número de unidades curriculares sin evaluaciones en el segundo semestre.",
         "variable_type": "count",
         "data_group": "academic_performance",
         "domain": "Non-negative count of curricular units.",
@@ -319,8 +320,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "second_semester",
     },
 
-    "Unemployment rate": {
-        "description": "Unemployment rate associated with the period represented in the dataset.",
+    "unemployment rate": {
+        "description": "Tasa de desempleo asociada al período representado en el conjunto de datos.",
         "variable_type": "continuous",
         "data_group": "macroeconomic",
         "domain": "Percentage; reference period and geographic scope should be verified.",
@@ -328,8 +329,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Inflation rate": {
-        "description": "Inflation rate associated with the period represented in the dataset.",
+    "inflation rate": {
+        "description": "Tasa de inflación asociada al periodo representado en el conjunto de datos.",
         "variable_type": "continuous",
         "data_group": "macroeconomic",
         "domain": "Percentage; reference period and geographic scope should be verified.",
@@ -337,8 +338,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "GDP": {
-        "description": "Gross domestic product indicator associated with the period represented in the dataset.",
+    "gdp": {
+        "description": "Indicador del producto interno bruto asociado al período representado en el conjunto de datos.",
         "variable_type": "continuous",
         "data_group": "macroeconomic",
         "domain": "Numerical economic indicator; unit and reference period should be verified.",
@@ -346,8 +347,8 @@ VARIABLE_METADATA = {
         "prediction_scenario": "enrollment",
     },
 
-    "Target": {
-        "description": "Final student outcome: dropout, enrolled, or graduate.",
+    "target": {
+        "description": "Resultado final del estudiante: abandono, matriculado o graduado.",
         "variable_type": "target",
         "data_group": "academic_outcome",
         "domain": "Dropout, Enrolled, Graduate.",
@@ -366,6 +367,10 @@ def create_data_dictionary(df: pd.DataFrame) -> pd.DataFrame:   # la función de
     Crea un diccionario de datos completo combinando metadatos definidos 
     manualmente e información del dataset detectada automáticamente
     """
+    
+    # Normalizar el df 
+    df = normalize_column_names(df)
+    
     
     missing_metadata = set(df.columns) - set(VARIABLE_METADATA)
     extra_metadata = set(VARIABLE_METADATA) - set(df.columns)
